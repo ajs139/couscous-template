@@ -1,3 +1,4 @@
+// TODO: make Chrome-supported ES6 instead of mish-mash ES5+6 and add linting
 $(function() {
   /**
    * Hacked JQuery
@@ -109,6 +110,22 @@ $(function() {
     }
   });
 
+  function hashchange() {
+    var section = $(`${window.location.hash}-section`).first();
+    if (section.length){
+      section.addClass('show');
+      section.parents('.collapse').addClass('show');
+      var offset = section.offset(); 
+      $('html, body').animate({
+        scrollTop: offset.top - 70, // - 70 allows for top bar
+        scrollLeft: offset.left
+      });
+    }
+  }
+
+  $(window).bind('hashchange', hashchange);
+  hashchange();
+
   // TOC
   $('#toc').toc({
     elementClass: 'toc',
@@ -126,4 +143,3 @@ $(function() {
     accordionsMenu.addClass('animated');
   }, 100);
 });
-

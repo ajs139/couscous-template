@@ -171,16 +171,16 @@
                                          .attr('href', '#' + id);
 
                 // Add anchor icon to heading
-                $('<a/>').addClass('toc-anchor')
-                         .html('#')
-                         .attr('href', '#' + id)
-                         .hide()
-                         .appendTo(headings[i]);
-                $(headings[i]).on('mouseover', function() {
-                    $(this).find('.toc-anchor').show();
-                }).on('mouseout', function() {
-                    $(this).find('.toc-anchor').hide();
-                });
+                // $('<a/>').addClass('toc-anchor')
+                //          .html('#')
+                //          .attr('href', '#' + id)
+                //          .hide()
+                //          .appendTo(headings[i]);
+                // $(headings[i]).on('mouseover', function() {
+                //     $(this).find('.toc-anchor').show();
+                // }).on('mouseout', function() {
+                //     $(this).find('.toc-anchor').hide();
+                // });
 
                 if (numbering.length == 1) {
                     var $li = $('<li/>').wrapInner($a).appendTo($toc);

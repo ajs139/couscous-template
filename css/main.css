@@ -219,7 +219,7 @@ pre code {
 }
 .accordion-menu label, .accordion-menu a, .toggle {
   position: relative;
-  display: block;
+  display: inline-block;
 }
 
 .accordion-menu label::before, .accordion-menu label::after, .accordion-menu a::after, .toggle::before, .toggle::after {
