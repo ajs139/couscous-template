@@ -8,6 +8,7 @@ $(function() {
   $('a').each(function() {
     var a = new RegExp('/' + window.location.host + '/');
     if(!a.test(this.href)) {
+      $(this).addClass('external');
       $(this).click(function(event) {
         event.preventDefault();
         event.stopPropagation();

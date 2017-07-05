@@ -75,8 +75,10 @@ footer:hover {
 footer p {
   margin: 0;
 }
-
-
+a.external {
+    background: url(../img/external.png) center right no-repeat;
+    padding-right: 13px;
+}
 li {
   margin-bottom: 3px;
 }
