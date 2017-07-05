@@ -1,0 +1,277 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  color: #666666;
+  display: none;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+h1, .h1 {
+  font-size: 2.5rem;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+}
+
+h3, .h3 {
+  font-size: 1.75rem;
+}
+
+h4, .h4 {
+  font-size: 1.5rem;
+}
+
+h5, .h5 {
+  font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1rem;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+main {
+  margin-top: 90px;
+}
+
+section {
+}
+
+main {
+  min-height: calc(100vh - 95px - 75px);
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 25px 0;
+  font-size: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0.6;
+  transition: opacity .2s ease;
+}
+footer:hover {
+  opacity: 1.0;
+  transition: opacity .2s ease;
+}
+footer p {
+  margin: 0;
+}
+
+
+li {
+  margin-bottom: 3px;
+}
+#content {
+  float: right;
+}
+#content img {
+  max-width: 100%;
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+header.navbar {
+  opacity: 0.9;
+}
+.navbar .navbar-brand {
+  height: auto;
+  line-height: 40px;
+  margin-left: 20px;
+}
+.navbar .navbar-brand small {
+  font-size: 0.8em;
+  font-weight: 300;
+  margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 960px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+.page-header {
+  margin-top: 0;
+}
+#sidebar {
+  float: left;
+}
+#sidebar .text-muted {
+  color: #bbbbbb;
+}
+
+pre {
+  padding: 0;
+  border-radius: 4px;
+  margin: 15px;
+}
+pre code {
+  border: none;
+}
+
+.todo {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid transparent;
+  margin:10px 0;
+  border-radius: 0.5rem;
+
+  color: #F92672;
+  background-color: #fcf8e3;
+  border-color: #faf2cc;
+}
+.todo::before {
+  font-family:FontAwesome;
+  font-style:normal;
+  font-weight:400;
+  speak:none;
+  text-decoration:inherit;
+  width:1em;
+  margin-right:.2em;
+  text-align:center;
+  font-variant:normal;
+  text-transform:none;
+  line-height:1em;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale
+}
+.todo::before {
+  content:"\f046";
+}
+.todo hr {
+  border-top-color: #f7ecb5;
+}
+
+.accordion-menu {
+  font-size: 0.8em;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  list-style-type:none;
+  padding: 0 0 0 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+.accordion-menu ul {
+  /* by default hide all sub menus */
+  display: none;
+  list-style-type:none;
+  padding: 0 0 0 12px;
+}
+.accordion-menu li {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+.accordion-menu li>a{
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+.accordion-menu li>a:focus, .accordion-menu li>a:hover {
+  text-decoration: none;
+}
+.accordion-menu input[type=checkbox] {
+  /* hide native checkbox */
+  position: absolute;
+  opacity: 0;
+}
+.accordion-menu li.active>a {
+  color: #fff;
+  background-color: #0275d8;
+}
+.toggle, .toggle:focus, .toggle:hover {
+  color: #666;
+  text-decoration: none;
+}
+.accordion-menu label, .accordion-menu a, .toggle {
+  position: relative;
+  display: block;
+}
+
+.accordion-menu label::before, .accordion-menu label::after, .accordion-menu a::after, .toggle::before, .toggle::after {
+  /* icons */
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.accordion-menu label, .toggle {
+  cursor: pointer;
+  font-weight: normal;
+  padding: 0.5rem 1rem;
+  padding-left: 24px;
+}
+.accordion-menu label::before, .toggle::after {
+  background-image: url(../img/icons.svg);
+  background-repeat: no-repeat;
+}
+.accordion-menu label::before, .toggle::after {
+  /* arrow icon */
+  left: 0px;
+  -webkit-transform: translateY(-50%) rotate(-90deg);
+  -moz-transform: translateY(-50%) rotate(-90deg);
+  -ms-transform: translateY(-50%) rotate(-90deg);
+  -o-transform: translateY(-50%) rotate(-90deg);
+  transform: translateY(-50%) rotate(-90deg);
+}
+.accordion-menu input[type=checkbox]:checked + label::before, a[aria-expanded="true"]::after {
+  /* rotate arrow */
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.accordion-menu input[type=checkbox]:checked + label + ul,
+.accordion-menu input[type=checkbox]:checked + label:nth-of-type(n) + ul {
+  /* use label:nth-of-type(n) to fix a bug on safari (<= 8.0.8) with multiple adjacent-sibling selectors*/
+  /* show children when item is checked */
+  display: block;
+}
+.accordion-menu.animated label::before, .toggle::after {
+  /* this class is used if you're using jquery to animate the accordion */
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s;
+}

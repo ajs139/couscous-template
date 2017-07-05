@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{{ title }}</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ baseUrl }}/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/ir-black.min.css">
+        <link rel="stylesheet" href="{{ baseUrl }}/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-light bg-faded fixed-top navbar-toggleable-sm">
+
+            <a class="navbar-brand" href="{{ baseUrl }}/">
+                {{ title|default('The title') }}
+                <small class="hidden-xs hidden-sm">
+                    {{ subTitle|default('This is the default subtitle!') }}
+                </small>
+            </a>
+
+        </header>
+
+        <main class="container-fluid">
+        <div class="row">
+
+            <nav id="sidebar" class="col-md-3 col-xl-2" role="navigation">
+
+                {% macro renderItem(baseUrl, item, key) %}
+                {% if item.items|length %}
+                    <li class="has-children">
+                        <input type="checkbox" name ="{{ key|raw }}" id="{{ key|raw }}" data-folder="{{ baseUrl ~ '/' ~ item.relativeUrl }}">
+                        <label for="{{ key|raw }}">{{ item.text|raw }}</label>
+                        <ul>
+                            {% for child in item.items %}
+                                {{ _self.renderItem(baseUrl, child, key ~ '-' ~ loop.index) }}
+                            {% endfor %}
+                        </ul>
+
+                {% else %}
+                    <li>
+                        <a href="{{ item.absoluteUrl|default(baseUrl ~ '/' ~ item.relativeUrl) }}">
+                            {{ item.text|raw }}
+                        </a>
+                    </li>
+
+                {% endif %}
+                {% endmacro %}
+                <ul class="accordion-menu">
+                    {% for itemId, item in menu.items %}
+                        {{ _self.renderItem(baseUrl, item, "menu-" ~ loop.index) }}
+                    {% endfor %}
+                </ul>
+
+            </nav>
+
+            <section id="content" class="col-md-9 col-xl-10">
+                {{ content|raw }}
+                <hr />
+            </section>
+
+        </div>
+        </main>
+        <footer>
+            <div class="container-fluid">
+                <p class="text-muted">
+                &copy; 2017 Curriculum Associates
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="{{ baseUrl }}/js/toc.js"></script>
+        <script src="{{ baseUrl }}/js/docs.js"></script>
+    </body>
+</html>
