@@ -4,19 +4,6 @@ $(function() {
    * Hacked JQuery
    */
 
-  // open external URLs in a new window
-  $('a').each(function() {
-    var a = new RegExp('/' + window.location.host + '/');
-    if(!a.test(this.href)) {
-      $(this).addClass('external');
-      $(this).click(function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        window.open(this.href, '_blank');
-      });
-    }
-  });
-
   // formatting
   $('section>h1').wrap('<div class="page-header" />');
 
@@ -100,7 +87,7 @@ $(function() {
     var end = $(`a[name="${name}-end"]`).first();
     if (start && end) {
       var span = start.parent().nextUntil(end.parent());
-      span.wrapAll(`<section class="collapse" id="${name}-section" markdown="1">`);
+      span.wrapAll(`<section class="collapse" id="${name}-section">`);
       toggle.attr('name', name);
       toggle.attr('href', `#${name}-section`);
       toggle.attr('data-toggle', 'collapse');
@@ -132,6 +119,19 @@ $(function() {
     elementClass: 'toc',
     // ulClass: 'nav',
     selector: 'h2, h3, h4, h5, h6',
+  });
+
+  // open external URLs in a new window
+  $('a').each(function() {
+    var a = new RegExp('/' + window.location.host + '/');
+    if(!a.test(this.href)) {
+      $(this).addClass('external');
+      $(this).click(function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        window.open(this.href, '_blank');
+      });
+    }
   });
 
   // Syntax highlighting
