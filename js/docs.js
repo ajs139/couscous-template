@@ -1,3 +1,11 @@
+function isKeyChecked(key) {
+  return localStorage.getItem(key) === 'true';
+}
+
+function setKeyChecked(key, checked) {
+  localStorage.setItem(key, checked ? 'true' : 'false');
+}
+
 // TODO: make Chrome-supported ES6 instead of mish-mash ES5+6 and add linting
 $(function() {
   /**
@@ -67,7 +75,14 @@ $(function() {
     var li = $(e);
     var debullet = false;
     if (li.html().startsWith('[ ]')) {
-      li.html(li.html().replace(/^\[ \]/, '<input type="checkbox">&nbsp;'));
+      const key = encodeURIComponent(li.text());
+      li.html(
+        li.html().replace(/^\[ \]/, '<input type="checkbox" data-key="' + key  + '"' + (isKeyChecked(key) ? ' checked' : '') + '>&nbsp;')
+      );
+      li.children('input[data-key]').click(function (e) {
+        const cb = $(e.target);
+        setKeyChecked(cb.attr('data-key'), e.target.checked);
+      });
       debullet = true;
     } else if (li.html().startsWith('[x]')) {
       li.html(li.html().replace(/^\[ \]/, '<input type="checkbox" checked>&nbsp;'));
