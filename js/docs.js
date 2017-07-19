@@ -47,6 +47,15 @@ $(function() {
 
 
   if( accordionsMenu.length > 0 ) {
+    function openSection(checkbox) {
+      checkbox.siblings('ul').attr('style', 'display:none;').slideDown(300);
+    }
+
+    function closeSection(checkbox) {
+      checkbox.siblings('ul').attr('style', 'display:block;').slideUp(300);
+      checkbox.siblings('ul').find('input[type="checkbox"]').prop('checked', false);
+      checkbox.siblings('ul').find('ul').attr('style', 'display:block;').slideUp(300);
+    }
 
     accordionsMenu.each(function(){
       var accordion = $(this);
@@ -55,14 +64,14 @@ $(function() {
         var that = this;
         var checkbox = $(this);
         if (checkbox.prop('checked')) {
-          $("nav#sidebar li>input").each(function (i, e) {
+          checkbox.parents('ul').first().children('li').children('input').each(function (i, e) {
             if(that !== this && $(this).prop('checked')) {
               $(this).prop('checked', false);
-              $(this).siblings('ul').attr('style', 'display:block;').slideUp(300);
+              closeSection($(this));
             }
           });
         }
-        ( checkbox.prop('checked') ) ? checkbox.siblings('ul').attr('style', 'display:none;').slideDown(300) : checkbox.siblings('ul').attr('style', 'display:block;').slideUp(300);
+        ( checkbox.prop('checked') ) ? openSection(checkbox) : closeSection(checkbox);
       });
     });
   }
