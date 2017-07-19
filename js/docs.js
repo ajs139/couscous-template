@@ -124,10 +124,11 @@ $(function() {
 
   function hashchange() {
     var section = $(`${window.location.hash}-section`).first();
-    if (section.length){
+    var heading = section.length ? section : $(`${window.location.hash}`).first();
+    if (section.length || heading.length){
       section.addClass('show');
-      section.parents('.collapse').addClass('show');
-      var offset = section.offset(); 
+      heading.parents('.collapse').addClass('show');
+      var offset = heading.offset(); 
       $('html, body').animate({
         scrollTop: offset.top - 70, // - 70 allows for top bar
         scrollLeft: offset.left
