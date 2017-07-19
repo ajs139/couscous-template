@@ -99,7 +99,7 @@ header.navbar {
 .navbar .navbar-brand {
   height: auto;
   line-height: 40px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .navbar .navbar-brand small {
   font-size: 0.8em;
@@ -123,6 +123,7 @@ header.navbar {
 }
 #sidebar {
   float: left;
+  padding-right: 8px;
 }
 #sidebar .text-muted {
   color: #bbbbbb;
@@ -175,7 +176,7 @@ pre code {
   margin-right: 0;
   margin-left: 0;
   list-style-type:none;
-  padding: 0 0 0 20px;
+  padding: 0 0 0 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
