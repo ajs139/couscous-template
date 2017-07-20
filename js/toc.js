@@ -18,11 +18,13 @@
 
         var that = this;
         $(this.options.selector).each(function(index, node) {
-            $(node)
-                .data('tagNumber', parseInt(node.tagName.substring(1)))	    // 1...6
-                .data('index', 1)
-                .data('numbering', '1');
-            that.headings.push(node);
+            if ($(node).text().toLowerCase() !== 'table of contents') {
+                $(node)
+                    .data('tagNumber', parseInt(node.tagName.substring(1)))        // 1...6
+                    .data('index', 1)
+                    .data('numbering', '1');
+                that.headings.push(node);
+            }
         });
 
         if (this.headings.length > 0) {
