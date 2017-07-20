@@ -17,7 +17,8 @@
         this.$element.addClass(this.options.elementClass);
 
         var that = this;
-        $(this.options.selector).each(function(index, node) {
+        var selector = this.$element.attr('data-selector') || this.options.selector;
+        $(selector).each(function(index, node) {
             if ($(node).text().toLowerCase() !== 'table of contents') {
                 $(node)
                     .data('tagNumber', parseInt(node.tagName.substring(1)))        // 1...6
